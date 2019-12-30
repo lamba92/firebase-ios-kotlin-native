@@ -8,8 +8,10 @@ plugins {
 
 val firebaseVersion: String by project
 
-group = "com.github.lamba92"
-version = firebaseVersion
+allprojects {
+    group = "com.github.lamba92"
+    version = firebaseVersion
+}
 
 val firebaseIosSetupFolderName = "$buildDir/firebaseIosSetup"
 

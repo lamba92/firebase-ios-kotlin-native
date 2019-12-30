@@ -22,14 +22,12 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
             .capitalize()
             .prefixIfNot("Firebase")
 
-        println("fname: $fName")
-
         kotlin {
 
-            ios(fName)
-            tvos(fName+"Tvos")
-            macosX64(fName+"Macos")
-            watchos(fName+"Watchos")
+            ios()
+            tvos()
+            macosX64()
+            watchos()
 
             targets.withType<KotlinNativeTarget> {
                 compilations["main"].cinterops {

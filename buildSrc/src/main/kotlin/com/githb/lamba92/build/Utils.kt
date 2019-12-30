@@ -27,6 +27,8 @@ fun NamedDomainObjectContainer<DefaultCInteropSettings>.bindFramework(
         this.defFile = buildString {
             appendln("language = Objective-C")
             appendln("package = $packageName")
+            appendln("staticLibraries = ${framework.name.removeSuffix(".framework")}")
+            appendln("libraryPaths = ${framework.absolutePath}")
             appendln("headers = $headersNames")
         }
             .let {
@@ -41,7 +43,6 @@ fun NamedDomainObjectContainer<DefaultCInteropSettings>.bindFramework(
             }
         includeDirs(file("${framework.absolutePath}/Headers"))
         compilerOpts("-F${framework.parentFile.absolutePath}")
-
     }
 }
 
