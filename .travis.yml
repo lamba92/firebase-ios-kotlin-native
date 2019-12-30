@@ -4,9 +4,9 @@ language: shell
 osx_image: xcode11.3
 
 before_install:
-  - echo "mannaggiasanta"
-  - gem install bundler
   - chmod +x gradlew
+
+script: sudo ./gradlew build
 
 cache:
   directories:
