@@ -1,11 +1,8 @@
 os: osx
-
-sudo: true
+osx_image: xcode11.3
 
 before_install:
   - chmod +x gradlew
-
-script: sudo ./gradlew build
 
 cache:
   directories:
