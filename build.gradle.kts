@@ -9,7 +9,7 @@ plugins {
 val firebaseVersion: String by project
 
 group = "com.github.lamba92"
-version = firebaseVersion
+version = System.getenv("TRAVIS_TAG") ?: "0.0.1"
 
 val firebaseIosSetupFolderName = "$buildDir/firebaseIosSetup"
 
