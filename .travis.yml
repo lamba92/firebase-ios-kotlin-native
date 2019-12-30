@@ -1,4 +1,5 @@
 os: osx
+language: shell
 
 osx_image: xcode11.3
 
