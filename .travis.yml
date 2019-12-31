@@ -13,10 +13,12 @@ cache:
     - $HOME/.gradle/caches
     - $HOME/.gradle/wrapper
     - $HOME/.konan/
+before_deploy:
+  - chmod +x deploy_script.sh
 
 deploy:
   provider: script
-  script: sudo chmod -R 777 . && ./gradlew bintrayUpload
+  script: ./deploy_script.sh
   skip_cleanup: true
   on:
     branch: master
