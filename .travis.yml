@@ -6,7 +6,7 @@ osx_image: xcode11
 before_install:
   - chmod +x gradlew
 
-script: sudo ./gradlew build --parallel
+script: ./gradlew build --parallel
 
 cache:
   directories:
@@ -16,7 +16,7 @@ cache:
 
 deploy:
   provider: script
-  script: sudo ./gradlew bintrayUpload
+  script: ./gradlew bintrayUpload
   skip_cleanup: true
   on:
     branch: master
