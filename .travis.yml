@@ -16,7 +16,7 @@ cache:
 
 deploy:
   provider: script
-  script: sudo chmod -R 777 . && ./gradlew bintrayUpload
+  script: ./gradlew bintrayUpload
   skip_cleanup: true
   on:
     branch: master

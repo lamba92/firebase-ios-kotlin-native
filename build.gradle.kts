@@ -53,6 +53,7 @@ val firebaseExtract = task<Sync>("extractFirebaseIosZip") {
         }
     }
     into("$firebaseIosSetupFolderName/${downloadFirebaseIos.dest.nameWithoutExtension}")
+    fileMode = 777
 }
 
 subprojects {
