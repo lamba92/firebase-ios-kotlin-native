@@ -45,7 +45,8 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
 
         if (bintrayApiKey != null && bintrayUsername != null)
             bintray {
-                println("Publishing credentials are available. Setting up publication")
+                println("> :${project.name}\n" +
+                        " - Publishing credentials are available. Setting up publication")
                 user = bintrayUsername
                 key = bintrayApiKey
                 pkg {
@@ -63,10 +64,12 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
                 publishing {
                     setPublications(publications.names)
                 }
-                println("Set up publications names: ${publications.joinToString()}")
+                println("> :${project.name}\n" +
+                        "Set up publications names: ${publications.joinToString()}")
             }
         else
-            println("publishing credentials not found.")
+            println("> :${project.name}\n" +
+                    "publishing credentials not found.")
 
     }
 }
