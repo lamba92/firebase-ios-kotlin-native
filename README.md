@@ -7,7 +7,7 @@ You want them for K/MPP as well? Check out my [firebase-multiplatform](https://g
 The libraries are built and published on Bintray. The version tag is composed of 2 parts: 
  - `{firebase versions}-{publication revision}`.
  
- For example, the bindings built for Firebase v6.14.0 may have versions `6.14.0-{something}`. For the first release the `-{something}` will be missing!.
+ For example, the bindings built for Firebase v6.14.0 may have versions `6.14.0-{something}`. For the first revision of a Firebase version the `-{something}` will be omitted!.
  At the moment the available modules are:
  - core
  - auth
