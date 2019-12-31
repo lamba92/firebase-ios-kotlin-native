@@ -1,5 +1,7 @@
 import com.githb.lamba92.build.FirebaseIosKotlinNativeArtifactsPlugin
 import org.jetbrains.kotlin.gradle.tasks.CInteropProcess
+import java.nio.file.Files
+import java.nio.file.attribute.PosixFilePermissions
 import java.util.zip.ZipFile
 
 plugins {
@@ -39,7 +41,9 @@ val downloadFirebaseIos = task<de.undercouch.gradle.tasks.download.Download>("do
 
     src(firebaseDownloadUrl)
     dest(file)
-
+    doLast {
+        Files.setPosixFilePermissions(file.toPath(), PosixFilePermissions.fromString("rw-rw-rw-"))
+    }
 }
 
 val firebaseExtract = task<Sync>("extractFirebaseIosZip") {
@@ -53,7 +57,7 @@ val firebaseExtract = task<Sync>("extractFirebaseIosZip") {
         }
     }
     into("$firebaseIosSetupFolderName/${downloadFirebaseIos.dest.nameWithoutExtension}")
-    fileMode = 777
+    fileMode = 666
 }
 
 subprojects {
