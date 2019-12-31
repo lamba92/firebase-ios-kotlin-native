@@ -25,6 +25,7 @@ The libraries are built and published on Bintray. The version tag is composed of
   - watchOsArm32
   - watchOsArm64
   - watchOsX86
+  
 ```kotlin
 repositories {
     maven("https://dl.bintray.com/lamba92/com.github.lamba92/")
