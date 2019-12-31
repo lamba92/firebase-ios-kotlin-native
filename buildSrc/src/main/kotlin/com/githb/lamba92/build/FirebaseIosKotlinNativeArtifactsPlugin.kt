@@ -41,7 +41,9 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
         }
 
         val bintrayUsername = searchPropertyOrNull("bintrayUsername")
+            ?: searchPropertyOrNull("BINTRAY_USERNAME")
         val bintrayApiKey = searchPropertyOrNull("bintrayApiKey")
+            ?: searchPropertyOrNull("BINTRAY_API_KEY")
 
         if (bintrayApiKey != null && bintrayUsername != null)
             bintray {
