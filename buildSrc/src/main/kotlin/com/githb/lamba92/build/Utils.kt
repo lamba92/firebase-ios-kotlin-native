@@ -98,7 +98,7 @@ fun Project.searchProperty(propertyName: String) =
     searchPropertyOrNull(propertyName)
         ?: throw IllegalArgumentException(
             "Cannot find $propertyName in either " +
-                    "gradle/properties or environmental variables"
+                    "gradle.properties or environmental variables"
         )
 
 fun Project.searchProperties(vararg propertyNames: String) =
