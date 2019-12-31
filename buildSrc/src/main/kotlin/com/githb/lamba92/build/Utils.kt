@@ -17,13 +17,14 @@ fun NamedDomainObjectContainer<DefaultCInteropSettings>.bindFramework(
     project: Project
 ): DefaultCInteropSettings = with(project) {
 
-    val headersNames = File(framework, "Headers")
-        .walkTopDown()
-        .filter { it.isFile }
-        .map { it.name }
-        .joinToString(" ")
-
     maybeCreate(framework.name.removeSuffix(".framework")).apply {
+
+        val headersNames = File(framework, "Headers")
+            .walkTopDown()
+            .filter { it.isFile }
+            .map { it.name }
+            .joinToString(" ")
+
         this.defFile = buildString {
             appendln("language = Objective-C")
             appendln("package = $packageName")
