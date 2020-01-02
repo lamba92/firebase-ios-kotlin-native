@@ -3,10 +3,11 @@ language: shell
 
 osx_image: xcode11.3
 
-before_install:
+before_script:
   - chmod +x gradlew
+  - chmod +x travis_script.sh
 
-script: sudo ./gradlew build --parallel
+script: ./travis_script.sh
 
 cache:
   directories:
@@ -14,12 +15,9 @@ cache:
     - $HOME/.gradle/wrapper
     - $HOME/.konan/
 
-before_deploy:
-  - chmod +x deploy_script.sh
-
 deploy:
   provider: script
-  script: ./deploy_script.sh
+  script: ./gradlew bintrayUpload
   skip_cleanup: true
   on:
     branch: master
