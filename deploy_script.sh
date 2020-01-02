@@ -1,4 +1,2 @@
-sudo chmod -R 600 ./
-sudo chmod +x gradlew
-sudo chown -R travis ./
+sudo chmod -R a+rwx ./
 ./gradlew bintrayUpload
