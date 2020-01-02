@@ -5,22 +5,42 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.withType
+import org.gradle.api.tasks.Sync
+import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.util.prefixIfNot
+import java.io.File
 
 class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
+
     override fun apply(target: Project): Unit = with(target) {
+
+        project.projectDir.mkdirs()
+
         apply<MavenPublishPlugin>()
         apply<KotlinMultiplatformPluginWrapper>()
         apply<BintrayPlugin>()
 
+        val generatedSourcesPath = "$buildDir/generated/dummy"
+
         val fName = project.name
             .capitalize()
             .prefixIfNot("Firebase")
+
+        val extractFirebase by extractFirebaseIosZipProvider
+
+        val generateDefFileTask =
+            task<GenerateDefForFramework>("generate${fName}DefFile") {
+                dependsOn(extractFirebase)
+                val rootFrameworkDir = File(extractFirebase.destinationDir, "$fName.framework")
+                framework = rootFrameworkDir
+                libraryPaths = listOf(rootFrameworkDir)
+                staticLibraries = listOf(File(rootFrameworkDir, fName))
+                packageName = "com.google.firebase"
+                output = file("$buildDir/interop/def/$fName.def")
+            }
 
         kotlin {
 
@@ -31,9 +51,41 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
 
             targets.withType<KotlinNativeTarget> {
                 compilations["main"].cinterops {
-                    bindFirebaseFramework(fName, project)
+                    create(fName) {
+                        defFile = generateDefFileTask.output
+                        includeDirs(file("${generateDefFileTask.framework.absolutePath}/Headers"))
+                        compilerOpts("-F${generateDefFileTask.framework.parentFile.absolutePath}")
+                    }
                 }
             }
+
+            sourceSets {
+                val generatedMain by creating {
+                    kotlin.setSrcDirs(listOf("$generatedSourcesPath/kotlin"))
+                    resources.setSrcDirs(listOf("$generatedSourcesPath/resources"))
+                }
+                @Suppress("UNUSED_VARIABLE")
+                val commonMain by getting {
+                    dependsOn(generatedMain)
+                }
+            }
+        }
+
+        val generateDummySourceTask = task("generateDummySource") {
+            doLast {
+                File("$generatedSourcesPath/kotlin", "Dummy.kt")
+                    .apply {
+                        if (exists())
+                            delete()
+                        parentFile.mkdirs()
+                        createNewFile()
+                    }
+                    .writeText("private val dummy = \"dummy\"")
+            }
+        }
+
+        tasks.withType<KotlinCompile> {
+            dependsOn(generateDummySourceTask)
         }
 
         publishing.publications.withType<MavenPublication> {
@@ -64,12 +116,16 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
                 publishing {
                     setPublications(publications.names)
                 }
-                println("\n> :${project.name}\n" +
-                        " - Set up publications names: ${publications.joinToString()}")
+                println(
+                    "\n> :${project.name}\n" +
+                            " - Set up publications names: ${publications.joinToString()}"
+                )
             }
         else
-            println("\n> :${project.name}\n" +
-                    " - Publishing credentials not found.")
+            println(
+                "\n> :${project.name}\n" +
+                        " - Publishing credentials not found."
+            )
 
     }
 }

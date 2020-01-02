@@ -3,7 +3,7 @@ You want to use firebase when targeting iOS with K/N? You are in the right place
 
 You want them for K/MPP as well? Check out my [firebase-multiplatform](https://github.com/lamba92/firebase-multiplatform) project!
 
-# Install
+# Install [ ![Download](https://api.bintray.com/packages/lamba92/com.github.lamba92/kt-firebase/images/download.svg) ](https://bintray.com/lamba92/com.github.lamba92/kt-firebase/_latestVersion)
 The libraries are built and published on Bintray. The version tag is composed of 2 parts: 
  - `{firebase versions}-{publication revision}`.
  
@@ -17,14 +17,14 @@ The libraries are built and published on Bintray. The version tag is composed of
  **Your favorite module is missing?** Open an issue, I'll add it in the next build!
  
  While the available platforms are:
-  - iosArm64
-  - iosX64
-  - maosX64
-  - tvosArm64
-  - tvosX64
-  - watchOsArm32
-  - watchOsArm64
-  - watchOsX86
+  - iosarm64
+  - iosx64
+  - maosx64
+  - tvosarm64
+  - tvosx64
+  - watchosarm32
+  - watchosarm64
+  - watchosx86
   
 ```kotlin
 repositories {
@@ -32,6 +32,6 @@ repositories {
 }
 // stuff
 dependencies {
-    implementation("com.github.lamba92:kt-firebase-$module-$platform:$latestVersion")
+    implementation("com.github.lamba92:kt-firebase-$module-$platform:$version")
 }
 ```

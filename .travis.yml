@@ -13,6 +13,7 @@ cache:
     - $HOME/.gradle/caches
     - $HOME/.gradle/wrapper
     - $HOME/.konan/
+
 before_deploy:
   - chmod +x deploy_script.sh
 

@@ -3,6 +3,7 @@ package com.githb.lamba92.build
 import com.jfrog.bintray.gradle.BintrayExtension
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
+import org.gradle.api.provider.ListProperty
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.tasks.Sync
 import org.gradle.kotlin.dsl.*
@@ -10,6 +11,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.DefaultCInteropSettings
 import org.jetbrains.kotlin.util.suffixIfNot
 import java.io.File
+import kotlin.reflect.KProperty
 
 fun NamedDomainObjectContainer<DefaultCInteropSettings>.bindFramework(
     framework: File,
@@ -104,3 +106,12 @@ fun Project.searchProperty(propertyName: String) =
 
 fun Project.searchProperties(vararg propertyNames: String) =
     propertyNames.associate { it to searchPropertyOrNull(it) }
+
+val Project.extractFirebaseIosZipProvider
+    get() = rootProject.tasks.named<Sync>("extractFirebaseIosZip")
+
+operator fun <T> ListProperty<T>.getValue(receiver: Any?, property: KProperty<*>): List<T> =
+    get()
+
+operator fun <T> ListProperty<T>.setValue(receiver: Any?, property: KProperty<*>, value: Iterable<T>) =
+    set(value)
