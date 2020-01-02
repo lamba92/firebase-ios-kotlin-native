@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     `gradle-enterprise`
 }
@@ -10,6 +12,8 @@ gradleEnterprise {
     }
 }
 
-include(":core", ":auth", ":storage", ":firestore")
+include(
+    ":core", ":auth", ":storage", ":firestore", ":database",
+    ":dynamicLinks", ":functions", ":inAppMessaging", ":messaging"
+)
 rootProject.name = "firebase-ios-kotlin-native-artifacts"
-
