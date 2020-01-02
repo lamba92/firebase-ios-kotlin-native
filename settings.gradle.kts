@@ -14,6 +14,6 @@ gradleEnterprise {
 
 include(
     ":core", ":auth", ":storage", ":firestore", ":database",
-    ":dynamicLinks", ":functions", ":inAppMessaging", ":messaging"
+    ":dynamicLinks", ":functions", ":messaging"
 )
 rootProject.name = "firebase-ios-kotlin-native-artifacts"
