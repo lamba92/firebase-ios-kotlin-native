@@ -59,6 +59,11 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
                         compilerOpts("-F${generateDefFileTask.framework.parentFile.absolutePath}")
                     }
                 }
+                mavenPublication {
+                    artifactId = "kt-firebase-$artifactId"
+                    version = project.version.toString()
+                    groupId = project.group.toString()
+                }
             }
 
             sourceSets {
@@ -95,7 +100,7 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
         }
 
         publishing.publications.withType<MavenPublication> {
-            artifactId = "kt-firebase-$artifactId"
+            artifactId = if (artifactId.startsWith("kt-firebase")) artifactId else "kt-firebase-$artifactId"
             version = project.version.toString()
             groupId = project.group.toString()
         }
