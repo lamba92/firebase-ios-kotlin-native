@@ -11,6 +11,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.CInteropProcess
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 import org.jetbrains.kotlin.util.prefixIfNot
 import java.io.File
 
@@ -89,7 +90,7 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
             }
         }
 
-        tasks.withType<KotlinCompile> {
+        tasks.withType<KotlinNativeCompile> {
             dependsOn(generateDummySourceTask)
         }
 
