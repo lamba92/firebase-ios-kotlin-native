@@ -96,6 +96,8 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
 
         publishing.publications.withType<MavenPublication> {
             artifactId = "kt-firebase-$artifactId"
+            version = project.version.toString()
+            groupId = project.group.toString()
         }
 
         val bintrayUsername = searchPropertyOrNull("bintrayUsername")
