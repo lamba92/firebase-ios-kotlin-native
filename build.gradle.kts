@@ -66,6 +66,11 @@ val skipBuild = findProperty("skipBuild")
 
 if (!skipBuild)
     subprojects {
+        tasks {
+            named("publishToMavenLocal") {
+                dependsOn("build")
+            }
+        }
         repositories {
             mavenCentral()
         }
