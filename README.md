@@ -3,6 +3,8 @@ You want to use firebase when targeting iOS with K/N? You are in the right place
 
 You want them for K/MPP as well? Check out my [firebase-multiplatform](https://github.com/lamba92/firebase-multiplatform) project!
 
+NB: the frameworks are statically linked!
+
 # Install [ ![Download](https://api.bintray.com/packages/lamba92/com.github.lamba92/kt-firebase/images/download.svg) ](https://bintray.com/lamba92/com.github.lamba92/kt-firebase/_latestVersion)
 The libraries are built and published on Bintray. The version tag is composed of 2 parts: 
  - `{firebase versions}-{publication revision}`.
