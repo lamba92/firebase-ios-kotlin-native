@@ -23,7 +23,7 @@ cache:
 
 deploy:
   provider: script
-  script: ./gradlew bintrayUpload
+  script: ./gradlew bintrayUpload --console=plain
   skip_cleanup: true
   on:
     branch: master
