@@ -72,8 +72,5 @@ if (!skipBuild)
             mavenCentral()
         }
         apply<FirebaseIosKotlinNativeArtifactsPlugin>()
-        tasks.named("publishToMavenLocal") {
-            dependsOn("build")
-        }
     }
 
