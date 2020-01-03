@@ -25,3 +25,4 @@ val toBuild = System.getenv("TO_BUILD")
 include(*toBuild)
 
 rootProject.name = "firebase-ios-kotlin-native-artifacts"
+enableFeaturePreview("GRADLE_METADATA")
