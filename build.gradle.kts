@@ -66,14 +66,14 @@ val skipBuild = findProperty("skipBuild")
 
 if (!skipBuild)
     subprojects {
+        group = "com.github.lamba92"
+        version = System.getenv("TRAVIS_TAG") ?: "0.0.1"
         repositories {
             mavenCentral()
         }
         apply<FirebaseIosKotlinNativeArtifactsPlugin>()
-        tasks {
-            named("publishToMavenLocal") {
-                dependsOn("build")
-            }
+        tasks.named("publishToMavenLocal") {
+            dependsOn("build")
         }
     }
 
