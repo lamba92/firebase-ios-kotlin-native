@@ -59,10 +59,16 @@ val firebaseExtract = task<Sync>("extractFirebaseIosZip") {
     into("$firebaseIosSetupFolderName/${downloadFirebaseIos.dest.nameWithoutExtension}")
 }
 
-subprojects {
-    repositories {
-        mavenCentral()
+val skipBuild = findProperty("skipBuild")
+    ?.toString()
+    ?.toBoolean()
+    ?: false
+
+if (!skipBuild)
+    subprojects {
+        repositories {
+            mavenCentral()
+        }
+        apply<FirebaseIosKotlinNativeArtifactsPlugin>()
     }
-    apply<FirebaseIosKotlinNativeArtifactsPlugin>()
-}
 
