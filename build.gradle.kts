@@ -66,14 +66,14 @@ val skipBuild = findProperty("skipBuild")
 
 if (!skipBuild)
     subprojects {
+        repositories {
+            mavenCentral()
+        }
+        apply<FirebaseIosKotlinNativeArtifactsPlugin>()
         tasks {
             named("publishToMavenLocal") {
                 dependsOn("build")
             }
         }
-        repositories {
-            mavenCentral()
-        }
-        apply<FirebaseIosKotlinNativeArtifactsPlugin>()
     }
 
