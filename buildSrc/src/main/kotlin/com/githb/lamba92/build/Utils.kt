@@ -1,9 +1,13 @@
 package com.githb.lamba92.build
 
 import com.jfrog.bintray.gradle.BintrayExtension
+import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
+import org.gradle.api.NamedDomainObjectSet
 import org.gradle.api.Project
 import org.gradle.api.provider.ListProperty
+import org.gradle.api.publish.Publication
+import org.gradle.api.publish.PublicationContainer
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.tasks.Sync
 import org.gradle.kotlin.dsl.*
@@ -115,3 +119,12 @@ operator fun <T> ListProperty<T>.getValue(receiver: Any?, property: KProperty<*>
 
 operator fun <T> ListProperty<T>.setValue(receiver: Any?, property: KProperty<*>, value: Iterable<T>) =
     set(value)
+
+val <T> (T.() -> Unit).asAction: Action<T>
+    get() = Action<T> { this@asAction() }
+
+val <T> Action<T>.asLambda: T.() -> Unit
+    get() = { this@asLambda.execute(this) }
+
+fun Project.log(message: String) =
+    println("> project $name: ${message.suffixIfNot(".")}")

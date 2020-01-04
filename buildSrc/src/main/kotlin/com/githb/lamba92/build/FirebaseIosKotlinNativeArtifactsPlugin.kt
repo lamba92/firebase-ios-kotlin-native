@@ -1,16 +1,17 @@
 package com.githb.lamba92.build
 
 import com.jfrog.bintray.gradle.BintrayPlugin
+import com.jfrog.bintray.gradle.tasks.BintrayUploadTask
+import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.publish.maven.internal.artifact.FileBasedMavenArtifact
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
-import org.gradle.api.tasks.Sync
 import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.CInteropProcess
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 import org.jetbrains.kotlin.util.prefixIfNot
 import java.io.File
@@ -18,6 +19,12 @@ import java.io.File
 class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
 
     override fun apply(target: Project): Unit = with(target) {
+
+        val mavenPublicationConfigurator = Action<MavenPublication> {
+            artifactId = if (artifactId.startsWith("kt-firebase")) artifactId else "kt-firebase-$artifactId"
+            version = project.version.toString()
+            groupId = project.group.toString()
+        }
 
         project.projectDir.mkdirs()
 
@@ -52,18 +59,17 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
             watchos()
 
             targets.withType<KotlinNativeTarget> {
-                compilations["main"].cinterops {
-                    create(fName) {
-                        defFile = generateDefFileTask.output
-                        includeDirs(file("${generateDefFileTask.framework.absolutePath}/Headers"))
-                        compilerOpts("-F${generateDefFileTask.framework.parentFile.absolutePath}")
+                compilations["main"].apply {
+                    cinterops {
+                        create(fName) {
+                            defFile = generateDefFileTask.output
+                            includeDirs(file("${generateDefFileTask.framework.absolutePath}/Headers"))
+                            compilerOpts("-F${generateDefFileTask.framework.parentFile.absolutePath}")
+                        }
                     }
+                    enableEndorsedLibs = true
                 }
-                mavenPublication {
-                    artifactId = "kt-firebase-$artifactId"
-                    version = project.version.toString()
-                    groupId = project.group.toString()
-                }
+                mavenPublication(mavenPublicationConfigurator)
             }
 
             sourceSets {
@@ -99,11 +105,7 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
             dependsOn(generateDummySourceTask)
         }
 
-        publishing.publications.withType<MavenPublication> {
-            artifactId = if (artifactId.startsWith("kt-firebase")) artifactId else "kt-firebase-$artifactId"
-            version = project.version.toString()
-            groupId = project.group.toString()
-        }
+        publishing.publications.withType(mavenPublicationConfigurator.asLambda)
 
         val bintrayUsername = searchPropertyOrNull("bintrayUsername")
             ?: searchPropertyOrNull("BINTRAY_USERNAME")
@@ -140,5 +142,17 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
                         " - Publishing credentials not found."
             )
 
+        tasks.withType<BintrayUploadTask> {
+            doFirst {
+                publishing.publications.withType<MavenPublication> {
+                    buildDir.resolve("publications/$name/module.json").let {
+                        if (it.exists())
+                            artifact(object : FileBasedMavenArtifact(it) {
+                                override fun getDefaultExtension() = "module"
+                            })
+                    }
+                }
+            }
+        }
     }
 }
