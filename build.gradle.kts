@@ -13,7 +13,7 @@ val firebaseVersion: String by project
 allprojects {
     group = "com.github.lamba92"
     version = System.getenv("TRAVIS_TAG").let {
-        if (it.isNullOrBlank()) "6.14.0-metadata-test" else it
+        if (it.isNullOrBlank()) "0.0.1" else it
     }
 }
 
