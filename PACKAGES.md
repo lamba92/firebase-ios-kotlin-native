@@ -1,0 +1,186 @@
+# List of all available artifacts:
+
+ - [Core](#Core)
+ - [Auth](#Auth)
+ - [Database](#Database)
+ - [Dynamic Links](#Dynamic-Links)
+ - [Firestore](#Firestore)
+ - [Functions](#Functions)
+ - [Messaging](#Messaging)
+ - [Storage](#Storage)
+
+### Core
+ - `kt-firebase-core`
+ - `kt-firebase-core-iosarm64`
+ - `kt-firebase-core-iosx64`
+ - `kt-firebase-core-macosx64`
+ - `kt-firebase-core-metadata`
+ - `kt-firebase-core-static`
+ - `kt-firebase-core-static-iosarm64`
+ - `kt-firebase-core-static-iosx64`
+ - `kt-firebase-core-static-macosx64`
+ - `kt-firebase-core-static-metadata`
+ - `kt-firebase-core-static-tvosarm64`
+ - `kt-firebase-core-static-tvosx64`
+ - `kt-firebase-core-static-watchosarm32`
+ - `kt-firebase-core-static-watchosarm64`
+ - `kt-firebase-core-static-watchosx86`
+ - `kt-firebase-core-tvosarm64`
+ - `kt-firebase-core-tvosx64`
+ - `kt-firebase-core-watchosarm32`
+ - `kt-firebase-core-watchosarm64`
+ - `kt-firebase-core-watchosx86`
+
+### Auth
+ - `kt-firebase-auth`
+ - `kt-firebase-auth-iosarm64`
+ - `kt-firebase-auth-iosx64`
+ - `kt-firebase-auth-macosx64`
+ - `kt-firebase-auth-metadata`
+ - `kt-firebase-auth-static`
+ - `kt-firebase-auth-static-iosarm64`
+ - `kt-firebase-auth-static-iosx64`
+ - `kt-firebase-auth-static-macosx64`
+ - `kt-firebase-auth-static-metadata`
+ - `kt-firebase-auth-static-tvosarm64`
+ - `kt-firebase-auth-static-tvosx64`
+ - `kt-firebase-auth-static-watchosarm32`
+ - `kt-firebase-auth-static-watchosarm64`
+ - `kt-firebase-auth-static-watchosx86`
+ - `kt-firebase-auth-tvosarm64`
+ - `kt-firebase-auth-tvosx64`
+ - `kt-firebase-auth-watchosarm32`
+ - `kt-firebase-auth-watchosarm64`
+ - `kt-firebase-auth-watchosx86`
+ 
+### Database
+ - `kt-firebase-database`
+ - `kt-firebase-database-iosarm64`
+ - `kt-firebase-database-iosx64`
+ - `kt-firebase-database-macosx64`
+ - `kt-firebase-database-metadata`
+ - `kt-firebase-database-static`
+ - `kt-firebase-database-static-iosarm64`
+ - `kt-firebase-database-static-iosx64`
+ - `kt-firebase-database-static-macosx64`
+ - `kt-firebase-database-static-metadata`
+ - `kt-firebase-database-static-tvosarm64`
+ - `kt-firebase-database-static-tvosx64`
+ - `kt-firebase-database-static-watchosarm32`
+ - `kt-firebase-database-static-watchosarm64`
+ - `kt-firebase-database-static-watchosx86`
+ - `kt-firebase-database-tvosarm64`
+ - `kt-firebase-database-tvosx64`
+ - `kt-firebase-database-watchosarm32`
+ - `kt-firebase-database-watchosarm64`
+ - `kt-firebase-database-watchosx86`
+ 
+### Dynamic Links
+ - `kt-firebase-dynamicLinks`
+ - `kt-firebase-dynamicLinks-iosarm64`
+ - `kt-firebase-dynamicLinks-iosx64`
+ - `kt-firebase-dynamicLinks-macosx64`
+ - `kt-firebase-dynamicLinks-metadata`
+ - `kt-firebase-dynamicLinks-static`
+ - `kt-firebase-dynamicLinks-static-iosarm64`
+ - `kt-firebase-dynamicLinks-static-iosx64`
+ - `kt-firebase-dynamicLinks-static-macosx64`
+ - `kt-firebase-dynamicLinks-static-metadata`
+ - `kt-firebase-dynamicLinks-static-tvosarm64`
+ - `kt-firebase-dynamicLinks-static-tvosx64`
+ - `kt-firebase-dynamicLinks-static-watchosarm32`
+ - `kt-firebase-dynamicLinks-static-watchosarm64`
+ - `kt-firebase-dynamicLinks-static-watchosx86`
+ - `kt-firebase-dynamicLinks-tvosarm64`
+ - `kt-firebase-dynamicLinks-tvosx64`
+ - `kt-firebase-dynamicLinks-watchosarm32`
+ - `kt-firebase-dynamicLinks-watchosarm64`
+ - `kt-firebase-dynamicLinks-watchosx86`
+ 
+### Firestore
+ - `kt-firebase-firestore`
+ - `kt-firebase-firestore-iosarm64`
+ - `kt-firebase-firestore-iosx64`
+ - `kt-firebase-firestore-macosx64`
+ - `kt-firebase-firestore-metadata`
+ - `kt-firebase-firestore-static`
+ - `kt-firebase-firestore-static-iosarm64`
+ - `kt-firebase-firestore-static-iosx64`
+ - `kt-firebase-firestore-static-macosx64`
+ - `kt-firebase-firestore-static-metadata`
+ - `kt-firebase-firestore-static-tvosarm64`
+ - `kt-firebase-firestore-static-tvosx64`
+ - `kt-firebase-firestore-static-watchosarm32`
+ - `kt-firebase-firestore-static-watchosarm64`
+ - `kt-firebase-firestore-static-watchosx86`
+ - `kt-firebase-firestore-tvosarm64`
+ - `kt-firebase-firestore-tvosx64`
+ - `kt-firebase-firestore-watchosarm32`
+ - `kt-firebase-firestore-watchosarm64`
+ - `kt-firebase-firestore-watchosx86`
+ 
+### Functions
+ - `kt-firebase-functions`
+ - `kt-firebase-functions-iosarm64`
+ - `kt-firebase-functions-iosx64`
+ - `kt-firebase-functions-macosx64`
+ - `kt-firebase-functions-metadata`
+ - `kt-firebase-functions-static`
+ - `kt-firebase-functions-static-iosarm64`
+ - `kt-firebase-functions-static-iosx64`
+ - `kt-firebase-functions-static-macosx64`
+ - `kt-firebase-functions-static-metadata`
+ - `kt-firebase-functions-static-tvosarm64`
+ - `kt-firebase-functions-static-tvosx64`
+ - `kt-firebase-functions-static-watchosarm32`
+ - `kt-firebase-functions-static-watchosarm64`
+ - `kt-firebase-functions-static-watchosx86`
+ - `kt-firebase-functions-tvosarm64`
+ - `kt-firebase-functions-tvosx64`
+ - `kt-firebase-functions-watchosarm32`
+ - `kt-firebase-functions-watchosarm64`
+ - `kt-firebase-functions-watchosx86`
+
+### Messaging
+ - `kt-firebase-messaging`
+ - `kt-firebase-messaging-iosarm64`
+ - `kt-firebase-messaging-iosx64`
+ - `kt-firebase-messaging-macosx64`
+ - `kt-firebase-messaging-metadata`
+ - `kt-firebase-messaging-static`
+ - `kt-firebase-messaging-static-iosarm64`
+ - `kt-firebase-messaging-static-iosx64`
+ - `kt-firebase-messaging-static-macosx64`
+ - `kt-firebase-messaging-static-metadata`
+ - `kt-firebase-messaging-static-tvosarm64`
+ - `kt-firebase-messaging-static-tvosx64`
+ - `kt-firebase-messaging-static-watchosarm32`
+ - `kt-firebase-messaging-static-watchosarm64`
+ - `kt-firebase-messaging-static-watchosx86`
+ - `kt-firebase-messaging-tvosarm64`
+ - `kt-firebase-messaging-tvosx64`
+ - `kt-firebase-messaging-watchosarm32`
+ - `kt-firebase-messaging-watchosarm64`
+ - `kt-firebase-messaging-watchosx86`
+ 
+### Storage
+ - `kt-firebase-storage`
+ - `kt-firebase-storage-iosarm64`
+ - `kt-firebase-storage-iosx64`
+ - `kt-firebase-storage-macosx64`
+ - `kt-firebase-storage-metadata`
+ - `kt-firebase-storage-static`
+ - `kt-firebase-storage-static-iosarm64`
+ - `kt-firebase-storage-static-iosx64`
+ - `kt-firebase-storage-static-macosx64`
+ - `kt-firebase-storage-static-metadata`
+ - `kt-firebase-storage-static-tvosarm64`
+ - `kt-firebase-storage-static-tvosx64`
+ - `kt-firebase-storage-static-watchosarm32`
+ - `kt-firebase-storage-static-watchosarm64`
+ - `kt-firebase-storage-static-watchosx86`
+ - `kt-firebase-storage-tvosarm64`
+ - `kt-firebase-storage-tvosx64`
+ - `kt-firebase-storage-watchosarm32`
+ - `kt-firebase-storage-watchosarm64`
+ - `kt-firebase-storage-watchosx86`

@@ -3,13 +3,14 @@ You want to use firebase when targeting iOS with K/N? You are in the right place
 
 You want them for K/MPP as well? Check out my [firebase-multiplatform](https://github.com/lamba92/firebase-multiplatform) project!
 
-NB: the frameworks are statically linked!
+All builds for all platforms are available statically and dynamically linked! 
 
 # Install [ ![Download](https://api.bintray.com/packages/lamba92/com.github.lamba92/kt-firebase/images/download.svg) ](https://bintray.com/lamba92/com.github.lamba92/kt-firebase/_latestVersion)
 The libraries are built and published on Bintray. The version tag is composed of 2 parts: 
  - `{firebase versions}-{publication revision}`.
  
- For example, the bindings built for Firebase v6.14.0 may have versions `6.14.0-{something}`. For the first revision of a Firebase version the `-{something}` will be omitted!.
+ For example, the bindings built for Firebase v6.14.0 may have versions `6.14.0-{something}`. For the first revision of a Firebase version the `-{something}` will be omitted!
+ 
  At the moment the available modules are:
  - core
  - auth
@@ -32,6 +33,9 @@ The libraries are built and published on Bintray. The version tag is composed of
   - watchosarm64
   - watchosx86
   
+You can add `static` after the module name to get the statically linked artifacts. Have a look at all artifacts [here](PACKAGES.md)
+
+Example:
 ```kotlin
 repositories {
     maven("https://dl.bintray.com/lamba92/com.github.lamba92/")
@@ -41,3 +45,4 @@ dependencies {
     implementation("com.github.lamba92:kt-firebase-$module-$platform:$version")
 }
 ```
+
