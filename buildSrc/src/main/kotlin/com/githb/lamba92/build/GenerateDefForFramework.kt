@@ -22,6 +22,9 @@ open class GenerateDefForFramework : DefaultTask() {
     @get:Input
     var packageName by project.objects.property<String>()
 
+    @get:Input
+    var buildStatic by project.objects.property<Boolean>()
+
     @get:InputFiles
     @get:PathSensitive(PathSensitivity.RELATIVE)
     var libraryPaths by project.objects.listProperty<File>()
@@ -30,20 +33,26 @@ open class GenerateDefForFramework : DefaultTask() {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     var staticLibraries by project.objects.listProperty<File>()
 
+    init {
+        buildStatic = false
+    }
+
     @TaskAction
     private fun generate(): Unit = with(project) {
         val headersNames = File(framework, "Headers")
             .walkTopDown()
-            .filter { it.isFile }
+            .filter { it.isFile && it.extension == ".h" }
             .map { it.name }
             .joinToString(" ")
 
         val defContent = buildString {
             appendln("language = Objective-C")
             appendln("package = $packageName")
-            appendln("staticLibraries = ${staticLibraries.joinToString(" ") { it.name }}")
-            appendln("libraryPaths = ${libraryPaths.joinToString(" ") { it.absolutePath }}")
             appendln("headers = $headersNames")
+            if (buildStatic) {
+                appendln("staticLibraries = ${staticLibraries.joinToString(" ") { it.name }}")
+                appendln("libraryPaths = ${libraryPaths.joinToString(" ") { it.absolutePath }}")
+            }
         }
 
         with(output) {

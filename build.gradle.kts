@@ -12,8 +12,12 @@ val firebaseVersion: String by project
 
 allprojects {
     group = "com.github.lamba92"
-    version = System.getenv("TRAVIS_TAG") ?: "0.0.1"
+    version = System.getenv("TRAVIS_TAG").let {
+        if (it.isNullOrBlank()) "6.14.0-metadata-test" else it
+    }
 }
+
+println("Project version: $version")
 
 val firebaseIosSetupFolderName = "$buildDir/firebaseIosSetup"
 
