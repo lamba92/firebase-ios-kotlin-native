@@ -24,6 +24,7 @@ cache:
     - $HOME/.gradle/caches
     - $HOME/.gradle/wrapper
     - $HOME/.konan/
+    - $TRAVIS_BUILD_DIR/build/firebaseIosSetup
 
 deploy:
   provider: script
