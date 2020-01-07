@@ -37,6 +37,7 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
         val fName = project.name
             .capitalize()
             .prefixIfNot("Firebase")
+            .removeSuffix("-static")
 
         val extractFirebase by extractFirebaseIosZipProvider
 
@@ -49,6 +50,7 @@ class FirebaseIosKotlinNativeArtifactsPlugin : Plugin<Project> {
                 staticLibraries = listOf(File(rootFrameworkDir, fName))
                 packageName = "com.google.firebase"
                 output = file("$buildDir/interop/def/$fName.def")
+                buildStatic = "static" in project.name
             }
 
         kotlin {

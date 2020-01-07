@@ -18,8 +18,14 @@ val toBuild = System.getenv("TO_BUILD")
     ?.map { if (it.startsWith(":")) it else ":$it" }
     ?.toTypedArray()
     ?: arrayOf(
-        ":core", ":auth", ":storage", ":firestore", ":database",
-        ":dynamicLinks", ":functions", ":messaging"
+        ":core", ":core-static" ,
+        ":auth", ":auth-static",
+        ":storage", ":storage-static",
+        ":firestore", ":firestore-static",
+        ":database", ":database-static",
+        ":dynamicLinks", ":dynamicLinks-static",
+        ":functions", ":functions-static",
+        ":messaging", ":messaging-static"
     )
 
 include(*toBuild)

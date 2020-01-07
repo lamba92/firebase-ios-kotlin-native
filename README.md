@@ -15,6 +15,10 @@ The libraries are built and published on Bintray. The version tag is composed of
  - auth
  - storage
  - firestore
+ - database
+ - dynamicLinks
+ - functions
+ - messaging
  
  **Your favorite module is missing?** Open an issue, I'll add it in the next build!
  

@@ -41,7 +41,7 @@ open class GenerateDefForFramework : DefaultTask() {
     private fun generate(): Unit = with(project) {
         val headersNames = File(framework, "Headers")
             .walkTopDown()
-            .filter { it.isFile && it.extension == ".h" }
+            .filter { it.isFile && it.extension == "h" }
             .map { it.name }
             .joinToString(" ")
 

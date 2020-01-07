@@ -8,10 +8,14 @@ before_script:
   - chmod +x travis_script.sh
 
 env:
-  - TO_BUILD="core, auth"
-  - TO_BUILD="storage, firestore"
-  - TO_BUILD="database, dynamicLinks"
-  - TO_BUILD="functions, messaging"
+  - TO_BUILD="core, core-static" ,
+  - TO_BUILD="auth, auth-static",
+  - TO_BUILD="storage, storage-static",
+  - TO_BUILD="firestore, firestore-static",
+  - TO_BUILD="database, database-static",
+  - TO_BUILD="dynamicLinks, dynamicLinks-static",
+  - TO_BUILD="functions, functions-static",
+  - TO_BUILD="messaging, messaging-static"
 
 script: ./travis_script.sh
 
